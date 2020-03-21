@@ -22,27 +22,28 @@ class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-//          border: Border.all(width: 4,color: Colors.red) ,
-          image: DecorationImage(
-              image: AssetImage("images/background.png"), fit: BoxFit.cover),
-        ),
-        padding: EdgeInsets.all(10),
-        constraints: BoxConstraints.expand(),
-        child: SafeArea(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
-                flex: 5,
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/background.png"),
+                  fit: BoxFit.cover)),
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                flex: 7,
                 child: Center(
-                    child: Text(
-                  "Story text will go here...",
-                  style: TextStyle(fontSize: 25,),
-                ))),
-            Expanded(
+                  child: Text(
+                    "Story text will go here... afasdf sad fsadfasdfsad fasdf sa fasdf sfs fs s asfasdf asf asdf asd saf sadf asdfhj ksdfjsadhjf hsj fhjsadgfhj gshj fgshaj fhjsf jf " ,
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
                 child: FlatButton(
                     color: Colors.red,
                     onPressed: () {},
@@ -52,8 +53,12 @@ class _StoryPageState extends State<StoryPage> {
                         color: Colors.white,
                         fontSize: 20,
                       ),
-                    ))),
-            Expanded(
+                    )),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
                 child: FlatButton(
                     color: Colors.blue,
                     onPressed: () {},
@@ -63,9 +68,11 @@ class _StoryPageState extends State<StoryPage> {
                         color: Colors.white,
                         fontSize: 20,
                       ),
-                    )))
-          ],
-        )),
+                    )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
