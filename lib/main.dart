@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:story_app/StoryBrain.dart';
 
 void main() => runApp(Destini());
 
+StoryBrain sb = StoryBrain();
 class Destini extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,12 +35,12 @@ class _StoryPageState extends State<StoryPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
-                flex: 7,
+                flex: 5,
                 child: Center(
                   child: Text(
-                    "Story text will go here... afasdf sad fsadfasdfsad fasdf sa fasdf sfs fs s asfasdf asf asdf asd saf sadf asdfhj ksdfjsadhjf hsj fhjsadgfhj gshj fgshaj fhjsf jf " ,
+                    sb.getStoryTitle() ,
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 22,
                     ),
                   ),
                 ),
@@ -46,9 +48,11 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 child: FlatButton(
                     color: Colors.red,
-                    onPressed: () {},
+                    onPressed: () {
+                      nextData(1);
+                    },
                     child: Text(
-                      "Choice 1",
+                      sb.getChoice1(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -59,21 +63,32 @@ class _StoryPageState extends State<StoryPage> {
                 height: 10,
               ),
               Expanded(
-                child: FlatButton(
-                    color: Colors.blue,
-                    onPressed: () {},
-                    child: Text(
-                      "Choice 2",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    )),
+                child: Visibility(
+                  visible: sb.isButtonVisible(),
+                  child: FlatButton(
+                      color: Colors.blue,
+                      onPressed: () {
+                        nextData(2);
+                      },
+                      child: Text(
+                        sb.getChoice2(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      )),
+                ),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void nextData(int choice){
+    setState(() {
+      sb.nextStory(choice);
+    });
   }
 }
