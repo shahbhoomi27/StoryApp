@@ -78,6 +78,8 @@ class StoryBrain {
           _index++;
           break;
       }
+    }else{
+      _index = 0;
     }
   }
 
